@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useQuery } from "react-query";
+import allContactsRepo from "../../api/allContactsRepo";
 import CustomModal from "../CustomModal";
 
 const AllContacts = (props) => {
-  useEffect(() => {
+  const fetchInfiniteContacts = async (page) => {
+    const res = await allContactsRepo.getAll();
+    return res.data;
+  };
 
-  }, []);
-  
+  const { isLoading, isError, error, data, isFetching } = useQuery(
+    ["allContacts", page],
+    () => fetchInfiniteContacts(page),
+    { keepPreviousData: true }
+  );
   return (
     <div>
       <CustomModal {...props} title="ALL Contacts">
