@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import allContactsRepo from "../../api/allContactsRepo";
 import CustomModal from "../CustomModal";
 
 const AllContacts = (props) => {
+  const [page, setPage] = useState();
   const fetchInfiniteContacts = async (page) => {
     const res = await allContactsRepo.getAll();
     return res.data;
