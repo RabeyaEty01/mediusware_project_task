@@ -1,27 +1,19 @@
 import React, { useState } from "react";
-import AllContacts from "./Contacts/AllContacts";
-import USContacts from "./Contacts/USContacts";
+import AllContacts from "./Contacts/AllContactsModal";
+import USContacts from "./Contacts/USContactsModal";
 
 const Problem2 = () => {
-  const [isAllContactOpen, setAllContactOpen] = useState(false);
-  const [isUsContactOpen, setUsContactOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
   const handleOnClose = (res) => {
-    setAllContactOpen(false);
-  };
-  const updateHandleOnClose = (res) => {
-    setUsContactOpen(false);
+    setModalOpen(false);
   };
 
   return (
     <div className="container">
-      <USContacts
-        id="usContacts"
-        show={isUsContactOpen}
-        onClose={updateHandleOnClose}
-      />
+      <USContacts id="usContacts" show={isModalOpen} onClose={handleOnClose} />
       <AllContacts
         id="allContacts"
-        show={isAllContactOpen}
+        show={isModalOpen}
         onClose={handleOnClose}
       />
 

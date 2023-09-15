@@ -15,9 +15,6 @@ export default async (url, optionsProps = {}, fileUpload) => {
     ...optionsProps,
   };
 
-  if (fileUpload) {
-    delete options.headers["Content-Type"];
-  }
 
   try {
     const response = await instance(options);
